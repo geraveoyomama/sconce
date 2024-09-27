@@ -52,7 +52,7 @@ well.  It will place the server and instances into /torch-server/xxxxx.
 You can configure the server and instance after first run, but ideally ./stop
 it first.
 
-To connect through VNC, point your client at `your.server.ip.address:5900` and it
+To connect through VNC, point your client at `$HOST:5900` and it
 should prompt you for your password.
 
 As well as the torch server, there is also a file manager instance
