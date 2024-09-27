@@ -5,10 +5,7 @@ This repo is built for older versions of podman. Specifically the version availa
 ## podman TorchAPI Server in Debian-slim with Wine 9
 ---
 
-This is a container image you can build yourself from Debian-slim.
-It will launch Space Engineers Torch Server, and you can interact with it
-through a passworded VNC server, or through Command Line Interface
-(CLI).
+This is a container image you can build yourself from Debian-slim. It will launch Space Engineers Torch Server, and you can interact with it through a password protectedVNC server.
 
 This was created by combining previous work done by very smart people.
 
