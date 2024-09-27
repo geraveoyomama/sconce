@@ -3,8 +3,6 @@ Welcome to Sconce!
 ## podman TorchAPI Server in Debian-slim with Wine 9
 ---
 
-![TorchAPI GUI in VNC](images/torchapi-vnc.png) 
-
 This is a container image you can build yourself from Debian-slim.
 It will launch Space Engineers Torch Server, and you can interact with it
 through a passworded VNC server, or through Command Line Interface
