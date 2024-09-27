@@ -10,9 +10,6 @@ through a passworded VNC server, or through Command Line Interface
 
 This was created by combining previous work done by very smart people.
 
-This version combines soyasoya5's TorchAPI on Linux Docker and
-Devidian's work on streamlining and updating the old Dockers.
-
 ### Features
 ---
  - Wine 9 (staging, esync compatible)
