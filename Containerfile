@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:bookworm-20240513-slim
 
 WORKDIR /root
 
@@ -17,7 +17,7 @@ RUN \
   dpkg --add-architecture i386 && \
   apt-get -qq -y update && \
   apt-get upgrade -y -qq && \
-  apt-get install -y -qq software-properties-common curl perl gnupg2 wget && \
+  apt-get install -y -qq software-properties-common curl gnupg2 wget && \
   # add repository keys
   mkdir -pm755 /etc/apt/keyrings && \
   wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
@@ -25,8 +25,7 @@ RUN \
 #  echo "deb http://ftp.us.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
-  apt-get install -y --no-install-recommends x11vnc openbox winbind
-# libfaudio0 libfaudio0:i386
+  apt-get install -y winbind x11vnc openbox libfaudio0 libfaudio0:i386
 #RUN \
 #  apt-get update -qq && \
 #  echo steam steam/question select "I AGREE" | debconf-set-selections && \
@@ -34,18 +33,17 @@ RUN \
 #  apt-get install -qq -y \
 #  libfaudio0:i386 \
 #  libfaudio0 
-RUN \ 
+RUN \
   apt-get install -qq -y --install-recommends \
   winehq-${WINEBRANCH}=${WINEVERSION} \
   wine-${WINEBRANCH}-i386=${WINEVERSION} \
   wine-${WINEBRANCH}-amd64=${WINEVERSION} \
   wine-${WINEBRANCH}=${WINEVERSION} \
-#  wine \
 #  steamcmd ]
   xvfb \
   cabextract && \
   curl -L https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks > /usr/local/bin/winetricks && \
-  chmod +x /usr/local/bin/winetricks 
+  chmod +x /usr/local/bin/winetricks
 
 # Winetricks (This block uses most of the build time)
 RUN \
@@ -58,18 +56,14 @@ RUN \
 WORKDIR /app
 RUN \
   bash -c 'WINEARCH=win64 WINEPREFIX=/wineprefix /scripts/winetricks.sh' && \
-  rm -rf /scripts
 
-#set wine prefix
-RUN \
-  unset DISPLAY && \
-  winecfg
-# Remove stuff we do not need anymore to reduce docker size
-RUN \
-  apt-get purge -qq -y software-properties-common curl gnupg2 wget && \
-  apt-get autopurge -qq -y perl && \
+  # Remove stuff we do not need anymore to reduce docker size
+  apt-get remove -qq -y \
+  gnupg2 \
+  software-properties-common && \
+  apt-get autoremove -qq -y && \
   apt-get -qq clean autoclean && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
-  
+
 COPY entrypoint.sh /root/
 ENTRYPOINT /root/entrypoint.sh
