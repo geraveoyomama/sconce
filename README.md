@@ -1,9 +1,11 @@
-## Space Engineers Torch Server on a Linux Debian Docker with Wine 9
+Welcome to Sconce!
+
+## podman TorchAPI Server in Debian-slim with Wine 9
 ---
 
 ![TorchAPI GUI in VNC](images/torchapi-vnc.png) 
 
-This is a Docker image you can build yourself from Debian slim docker.
+This is a container image you can build yourself from Debian-slim.
 It will launch Space Engineers Torch Server, and you can interact with it
 through a passworded VNC server, or through Command Line Interface
 (CLI).
@@ -13,33 +15,28 @@ This was created by combining previous work done by very smart people.
 This version combines soyasoya5's TorchAPI on Linux Docker and
 Devidian's work on streamlining and updating the old Dockers.
 
-### Changes from soyasoya5's TorchAPI Docker
+### Features
 ---
- - Wine 9 instead of Wine 6
- - More control over Docker build (Debian slim, instead of mmmaxwwwell's Docker image)
- - Automatic Torch startup.
- - VNC access is secured with a password.
- - Implemented some of x10an14's suggestions (https://github.com/soyasoya5/se-torchapi-linux/pull/4)
-
+ - Wine 9 (staging, esync compatible)
+ - Configurable parameters for the container (torch autostart, password config).
+ - Torch GUI over VNC (password configurable).
 ## Requirements
 ---
-- Docker
-- docker-compose
+- podman
+- podman-compose
 - unzip
 - wget
-- Any VNC viewer (vncviewer for Linux / MobaXTerm for Windows)
+- Any VNC viewer
 
 ## Configuration
 ---
-You should edit the entrypoint.sh file and find this line;
+All configuration is done in the podman-compose.yml file. 
 
-`runuser -u wine -- bash -c 'x11vnc -display WAIT:99 -forever
--autoport 5900 -auth /app/.Xauthority -passwd mypassword -o
-/app/x11vnc.log -bg &'`
-
-Change -passwd `mypassword` to a password that you wish to use
-instead.  This should be done BEFORE you build the docker, as this
-file will be built into the docker image and cannot be changed later.
+## Notable options:
+- VNCPASSWORD= #handles the password for the VNC server
+- WINEESYNC=1 #comment to disable ESYNC
+- WINEPARAMS= #additional parameters passed AFTER wine command (wine $WINEPARAMS %command%)
+- TORCHFLAGS=-autostart #torch flags for autostart or specific instance paths.
 
 ## Usage
 ---
