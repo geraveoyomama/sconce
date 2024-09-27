@@ -60,24 +60,7 @@ RUN \
   bash -c 'WINEARCH=win64 WINEPREFIX=/wineprefix /scripts/winetricks.sh' && \
   rm -rf /scripts
 
-RUN \
-  apt-get autopurge -qq -y  \
-  winehq-${WINEBRANCH}=${WINEVERSION} \
-  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-  wine-${WINEBRANCH}=${WINEVERSION} \
-  wine
-
-ARG WINEBRANCH=staging
-ARG WINEVERSION=9.18~bookworm-1
-
-RUN \
-  apt-get install -qq -y --install-recommends \
-  winehq-${WINEBRANCH}=${WINEVERSION} \
-  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-  wine-${WINEBRANCH}=${WINEVERSION}
-
+#set wine prefix
 RUN \
   unset DISPLAY && \
   winecfg
