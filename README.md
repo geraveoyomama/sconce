@@ -18,7 +18,7 @@ Devidian's work on streamlining and updating the old Dockers.
  - Wine 9 (staging, esync compatible)
  - Configurable parameters for the container (torch autostart, password config).
  - Torch GUI over VNC (password configurable).
- - No permission issues. They are directly passed through to the container.
+ - No permission issues. The container has the same access as the running user.
 
 ## Requirements
 ---
