@@ -1,5 +1,7 @@
 Welcome to Sconce!
 
+This repo is built for older versions of podman. Specifically the version available in debian bookworm. This repo will be updated to match up to date versions of podman.
+
 ## podman TorchAPI Server in Debian-slim with Wine 9
 ---
 
@@ -15,7 +17,7 @@ This was created by combining previous work done by very smart people.
  - Wine 9 (staging, esync compatible)
  - Configurable parameters for the container (torch autostart, password config).
  - Torch GUI over VNC (password configurable).
- - No permission issues. The container has the same access as the running user.
+ - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Make specifici user if you need to and rely on standard linux permissions.
 
 ## Requirements
 ---
