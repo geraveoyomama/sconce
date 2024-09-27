@@ -26,11 +26,11 @@ Devidian's work on streamlining and updating the old Dockers.
 - wget
 - Any VNC viewer
 
-### Configuration
+## Configuration
 ---
 All configuration is done in the podman-compose.yml file. 
 
-## Notable options:
+### Notable options:
 - VNCPASSWORD= #handles the password for the VNC server
 - WINEESYNC=1 #comment to disable ESYNC
 - WINEPARAMS= #additional parameters passed AFTER wine command (wine $WINEPARAMS %command%)
