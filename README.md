@@ -30,7 +30,7 @@ This was created by combining previous work done by very smart people.
 All configuration is done in the podman-compose.yml file. 
 
 ### Notable options:
-- VNCPASSWORD=mypassword #handles the password for the VNC server
+- VNCPASSWORD=mypassword #handles the password for the VNC server #must be set
 - WINEESYNC=1 #comment to disable ESYNC
 - WINEPARAMS= #additional parameters passed AFTER wine command (wine $WINEPARAMS %command%)
 - TORCHFLAGS=-autostart #torch flags for autostart or specific instance paths.
