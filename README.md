@@ -26,7 +26,7 @@ Devidian's work on streamlining and updating the old Dockers.
 - wget
 - Any VNC viewer
 
-## Configuration
+### Configuration
 ---
 All configuration is done in the podman-compose.yml file. 
 
