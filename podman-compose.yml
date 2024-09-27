@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  se-torchapi-linux:
+    build: .
+    image: spaceengineers:torchapi-staging
+    container_name: torchapi-staging
+    restart: unless-stopped
+    userns_mode: keep-id
+    volumes:
+      - ./torch-server:/app/torch-server
+#      - ./entrypoint.sh:/root/entrypoint.sh #enable to customise entrypoint without rebuilding. ONLY IF YOU KNOW WHAT YOU ARE DOING!
+    ports:
+     - "27016:27016/udp"
+     - "5009:5900" #change port if already in use.
+    environment:
+      - VNCPASSWORD=password
+      - WINEDEBUG=-all
+#      - WINEDEBUG=+esync
+      - WINEESYNC=1 #comment to disable ESYNC
+      - DXVK_ASYNC=1 #should unhook the GUI from main game thread.
+      - WINEPARAMS= #additional parameters passed AFTER wine command (wine $WINEPARAMS %command%)
+#      - TORCHFLAGS=-autostart #torch flags
