@@ -2,7 +2,6 @@
 
 env WINEDEBUG=-all WINEDLLOVERRIDES="mscoree=d" wineboot --init /nogui 
 env WINEDEBUG=-all winetricks -q --force win10 
-#sleep 10
 env WINEDEBUG=-all winetricks corefonts 
 env DISPLAY=:99.0 WINEDEBUG=-all winetricks sound=disabled 
 env DISPLAY=:99.0 WINEDEBUG=-all winetricks -q vcrun2013 
