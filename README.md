@@ -1,6 +1,6 @@
 Welcome to Sconce!
 
-This repo is built for older versions of podman. Specifically the version available in debian bookworm. This repo will be updated to match up to date versions of podman.
+This repo is built for older versions of podman. Specifically the version available in debian bookworm. This repo will be updated to match up to date versions of podman once trixie is hailed into stable.
 
 ## podman TorchAPI Server in Debian-slim with Wine 9
 ---
