@@ -78,3 +78,4 @@ This will kill and unload all docker processes.  You shouldn't configure the ser
 - [jeppevinkel](https://github.com/jeppevinkel)
 - [soyasoya5](github.com/soyasoya5/se-torchapi-linux)
 - [Devidian](https://github.com/Devidian/docker-spaceengineers)
+- [stubkan](https://github.com/stubkan/torchapi-wine9)
