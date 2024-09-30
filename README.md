@@ -36,7 +36,7 @@ All configuration is done in the podman-compose.yml file.
 
 ## Usage
 ---
-1. Clone this repo
+1. Clone this repo (`git clone https://github.com/geraveoyomama/sconce`)
 2. Run `./start`
 
 First run will build the docker on your system, please be patient.
