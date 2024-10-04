@@ -58,7 +58,8 @@ RUN \
 WORKDIR /app
 RUN \
   bash -c 'WINEARCH=win64 WINEPREFIX=/wineprefix /scripts/winetricks.sh' && \
-  rm -rf /scripts
+  rm -rf /scripts && \
+  rm /usr/local/bin/winetricks
 
 RUN \
   apt-get autopurge -qq -y  \
