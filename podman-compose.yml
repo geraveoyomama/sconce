@@ -3,7 +3,7 @@ version: '3.8'
 services:
   sconce:
     build: .
-    image: sconce:main
+    image: geraveoyomama/sconce:main
     container_name: sconce
     restart: unless-stopped
     userns_mode: keep-id
@@ -14,7 +14,7 @@ services:
      - "27016:27016/udp" #Main game port.
      - "5009:5900" #change port if already in use.
     environment:
-      - VNCPASSWORD=password
+      - VNCPASSWORD=SEpassword
       - WINEDEBUG=-all #disable wine barfing logs to terminal
 #      - WINEDEBUG=+esync
       - WINEESYNC=1 #comment to disable ESYNC

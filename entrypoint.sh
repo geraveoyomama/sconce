@@ -30,5 +30,3 @@ bash -c 'DISPLAY=":99" wine $WINEPARAMS Z:/app/torch-server/Torch.Server.exe $TO
 #xvfb-run -n 99 -l -f /app/.Xauthority -- wine torch-server/Torch.Server.exe $@ &
 
 echo "Something didn't work.  Break this."
-
-

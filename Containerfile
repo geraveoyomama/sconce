@@ -25,7 +25,7 @@ RUN \
 #  echo "deb http://ftp.us.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
-  apt-get install -y --no-install-recommends x11vnc openbox winbind
+  apt-get install -y --no-install-recommends x11vnc openbox
 # libfaudio0 libfaudio0:i386
 #RUN \
 #  apt-get update -qq && \
@@ -35,7 +35,7 @@ RUN \
 #  libfaudio0:i386 \
 #  libfaudio0 
 RUN \ 
-  apt-get install -qq -y --install-recommends \
+  apt-get install -qq -y --no-install-recommends \
   winehq-${WINEBRANCH}=${WINEVERSION} \
   wine-${WINEBRANCH}-i386=${WINEVERSION} \
   wine-${WINEBRANCH}-amd64=${WINEVERSION} \
@@ -61,16 +61,16 @@ RUN \
   rm -rf /scripts && \
   rm /usr/local/bin/winetricks
 
-RUN \
-  apt-get autopurge -qq -y  \
-  winehq-${WINEBRANCH}=${WINEVERSION} \
-  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-  wine-${WINEBRANCH}=${WINEVERSION} \
-  wine
+#RUN \
+#  apt-get autopurge -qq -y  \
+#  winehq-${WINEBRANCH}=${WINEVERSION} \
+#  wine-${WINEBRANCH}-i386=${WINEVERSION} \
+#  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
+#  wine-${WINEBRANCH}=${WINEVERSION} \
+#  wine
 
 ARG WINEBRANCH=staging
-ARG WINEVERSION=9.19~bookworm-1
+ARG WINEVERSION=9.18~bookworm-1
 
 RUN \
   apt-get install -qq -y --install-recommends \
@@ -90,4 +90,5 @@ RUN \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
   
 COPY entrypoint.sh /root/
+RUN chmod +x /root/entrypoint.sh
 ENTRYPOINT /root/entrypoint.sh
