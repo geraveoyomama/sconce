@@ -25,7 +25,7 @@ RUN \
 #  echo "deb http://ftp.us.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
-  apt-get install -y --no-install-recommends x11vnc openbox
+  apt-get install -y --no-install-recommends x11vnc openbox menu
 # libfaudio0 libfaudio0:i386
 #RUN \
 #  apt-get update -qq && \
