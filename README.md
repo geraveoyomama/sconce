@@ -69,6 +69,7 @@ This will kill and unload all docker processes.  You shouldn't configure the ser
 - The window manager does not like it when the programs are closed.  If you close the server for any reason, you have to restart the docker.  Restarting the server actually closes it, and breaks the window manager (but it still restarts).  Also, you can only edit the server configs before you start it, not after.  I will try to fix this.
 - Enter the container by running: `podman exec -it sconce /bin/bash`
 - This If you need to update or change the start/stop scripts, you need to rebuild the docker image with the docker-compose up command including a --build flag. Once this has been done I request you make a merge request to add the functionality to the master sconce repo.
+- to access the remote API add `<RemoteApiIP>your.IP.in.here</RemoteApiIP>` to your `spaceengineers-dedicated.cfg`.
 
 ## Credits & Acknowledgements
 ---
