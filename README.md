@@ -73,6 +73,7 @@ This will kill and unload all docker processes.  You shouldn't configure the ser
 - Enter the container by running: `podman exec -it sconce /bin/bash`
 - This If you need to update or change the start/stop scripts, you need to rebuild the docker image with the docker-compose up command including a --build flag. Once this has been done I request you make a merge request to add the functionality to the master sconce repo.
 - to access the remote API add `<RemoteApiIP>your.IP.in.here</RemoteApiIP>` to your `spaceengineers-dedicated.cfg`.
+- If the remote API port is already in use change the external 8080 port to an available port.
 
 ## Credits & Acknowledgements
 ---
