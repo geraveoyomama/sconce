@@ -13,6 +13,7 @@ services:
     ports:
      - "27016:27016/udp" #Main game port.
      - "5009:5900" #change port if already in use.
+     - "8080:8080"
     environment:
       - VNCPASSWORD=Password
       - WINEDEBUG=-all #disable wine barfing logs to terminal
