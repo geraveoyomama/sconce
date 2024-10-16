@@ -19,6 +19,7 @@ This was created by combining previous work done by very smart people.
  - Configurable parameters for the container (torch autostart, password config).
  - Torch GUI over VNC (password configurable).
  - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Make specifici user if you need to and rely on standard linux permissions.
+ - remote API works
 
 ## Requirements
 ---
