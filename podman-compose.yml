@@ -1,12 +1,16 @@
 version: '3.8'
 
+x-podman:
+  in_pod: false
+  userns_mode: keep-id
+
 services:
   sconce:
     build: .
     image: geraveoyomama/sconce:main
     container_name: sconce
     restart: unless-stopped
-    userns_mode: keep-id
+    #userns_mode: keep-id
     volumes:
       - ./torch-server:/app/torch-server
 #      - ./entrypoint.sh:/root/entrypoint.sh #uncomment to inject custom entrypoint without rebuilding. ONLY IF YOU KNOW WHAT YOU ARE DOING!
