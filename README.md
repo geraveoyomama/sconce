@@ -41,16 +41,17 @@ All configuration is done in the podman-compose.yml file.
 
 ## Usage
 ---
-1. Clone this repo (`git clone https://github.com/geraveoyomama/sconce`)
-2. Run `./start`
+1. either have or add a non sudo user to run sconce
+2. su to the user
+3. Clone this repo (`git clone https://github.com/geraveoyomama/sconce`)
+4. change directory to sconce (`cd sconce`)
+5. Run `./start`
 
 First run will build the docker on your system, please be patient.
-After it is complete, you should see this;
-
 
 You can Ctrl-C break out of the start script after Torch is loaded, and it will
-continue running in the background.  You can access the VNC server as
-well.  It will place the server and instances into /torch-server/xxxxx.
+continue running in the background. You can access the VNC server as
+well. It will place the server and instances into /torch-server/xxxxx.
 You can configure the server and instance after first run, but ideally ./stop
 it first.
 
