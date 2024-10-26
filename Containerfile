@@ -70,7 +70,7 @@ RUN \
 #  wine
 
 ARG WINEBRANCH=staging
-ARG WINEVERSION=9.19~bookworm-1
+ARG WINEVERSION=9.20~bookworm-1
 
 RUN \
   apt-get install -qq -y --install-recommends \
