@@ -18,7 +18,7 @@ This was created by combining previous work done by very smart people.
  - Wine 9 (staging, esync compatible)
  - Configurable parameters for the container (torch autostart, password config).
  - Torch GUI over VNC (password configurable).
- - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Make specifici user if you need to and rely on standard linux permissions.
+ - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Make specific user if you need to and rely on standard linux permissions.
  - remote API works
 
 ## Requirements
