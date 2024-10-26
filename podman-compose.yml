@@ -6,8 +6,8 @@ x-podman:
 
 services:
   sconce:
-    build: .
-    image: geraveoyomama/sconce:latest
+    #build: .
+    image: ghcr.io/geraveoyomama/sconce:latest
     container_name: sconce
     restart: unless-stopped
     #userns_mode: keep-id
