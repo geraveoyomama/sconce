@@ -47,8 +47,6 @@ All configuration is done in the podman-compose.yml file.
 4. change directory to sconce (`cd sconce`)
 5. Run `./start`
 
-First run will build the docker on your system, please be patient.
-
 You can Ctrl-C break out of the start script after Torch is loaded, and it will
 continue running in the background. You can access the VNC server as
 well. It will place the server and instances into /torch-server/xxxxx.
