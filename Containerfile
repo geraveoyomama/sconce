@@ -5,8 +5,8 @@ WORKDIR /root
 # ARG only available during build
 # never env DEBIAN_FRONTEND=noninteractive !!
 ARG DEBIAN_FRONTEND=noninteractive
-ARG WINEBRANCH=stable
-ARG WINEVERSION=9.0.0.0~bookworm-1
+ARG WINEBRANCH=staging
+ARG WINEVERSION=9.20~bookworm-1
 
 ENV WINEARCH=win64
 ENV WINEDEBUG=-all
@@ -69,15 +69,15 @@ RUN \
 #  wine-${WINEBRANCH}=${WINEVERSION} \
 #  wine
 
-ARG WINEBRANCH=staging
-ARG WINEVERSION=9.20~bookworm-1
+#ARG WINEBRANCH=staging
+#ARG WINEVERSION=9.20~bookworm-1
 
-RUN \
-  apt-get install -qq -y --install-recommends \
-  winehq-${WINEBRANCH}=${WINEVERSION} \
-  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-  wine-${WINEBRANCH}=${WINEVERSION}
+#RUN \
+#  apt-get install -qq -y --install-recommends \
+#  winehq-${WINEBRANCH}=${WINEVERSION} \
+#  wine-${WINEBRANCH}-i386=${WINEVERSION} \
+#  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
+#  wine-${WINEBRANCH}=${WINEVERSION}
 
 RUN \
   unset DISPLAY && \
