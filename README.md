@@ -9,17 +9,17 @@ Tested to work with SE 1.205.
 ## podman TorchAPI Server in Debian-slim with Wine 9
 ---
 
-This is a container image you can build yourself from Debian-slim. It will launch Space Engineers Torch Server, and you can interact with it through a password protectedVNC server.
+This is a container image to run Torch for space engineers. You can interact with it through a password protected VNC server or by editing the configs manually.
 
-This was created by combining previous work done by very smart people.
+This was created by combining previous work done by very smart people, credits down below.
 
 ### Features
 ---
  - Wine 9 (staging, esync compatible)
  - Configurable parameters for the container (torch autostart, password config).
  - Torch GUI over VNC (password configurable).
- - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Make specific user if you need to and rely on standard linux permissions.
- - remote API works
+ - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Create specific user to isolate and rely on standard linux file permissions.
+ - remote API working
 
 ## Requirements
 ---
@@ -68,10 +68,10 @@ This will kill and unload all docker processes.  You shouldn't configure the ser
 ## Notes
 ---
 - This is designed for headless servers, nonetheless it will work on headed servers.
-- The window manager does not like it when the programs are closed.  If you close the server for any reason, you have to restart the docker.  Restarting the server actually closes it, and breaks the window manager (but it still restarts).  Also, you can only edit the server configs before you start it, not after.  I will try to fix this.
+- Closing the Torch window restarts all processes in the container. The container does not need to reboot to apply changes to torch.
 - Enter the container by running: `podman exec -it sconce /bin/bash`
-- This If you need to update or change the start/stop scripts, you need to rebuild the docker image with the docker-compose up command including a --build flag. Once this has been done I request you make a merge request to add the functionality to the master sconce repo.
-- to access the remote API add `<RemoteApiIP>your.IP.in.here</RemoteApiIP>` to your `spaceengineers-dedicated.cfg`, the port is 8080.
+- If you want to change the entrypoint script, you need to rebuild the image. Once this has been done I request you make a merge request to add the functionality to the master sconce repo.
+- To access the remote API add `<RemoteApiIP>your.IP.in.here</RemoteApiIP>` to your `spaceengineers-dedicated.cfg`, the port is 8080.
 - If the remote API port is already in use change the external 8080 port to an available port.
 
 ## Credits & Acknowledgements
