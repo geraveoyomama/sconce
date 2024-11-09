@@ -1,1 +1,1 @@
-podman build . -t ghcr.io/geraveoyomama/sconce:latest
+podman build .. -t ghcr.io/geraveoyomama/sconce:latest
