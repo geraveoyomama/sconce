@@ -78,14 +78,14 @@ RUN \
 
 #RUN \
   unset DISPLAY && \
-  winecfg && \
+  winecfg
 
 # Remove stuff we do not need anymore to reduce docker size
-#RUN \
+RUN \
   apt-get purge -qq -y software-properties-common curl gnupg2 && \
   apt-get autopurge -qq -y perl && \
-  apt install -y psmisc unzip wget && \
   apt-get -qq clean autoclean && \
+  apt install -y psmisc unzip wget && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
   
 COPY entrypoint.sh /root/
