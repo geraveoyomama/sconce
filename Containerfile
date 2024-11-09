@@ -17,7 +17,7 @@ RUN \
   dpkg --add-architecture i386 && \
   apt-get -qq -y update && \
   apt-get upgrade -y -qq && \
-  apt-get install -y -qq software-properties-common curl perl gnupg2 wget && \
+  apt-get install -y -qq software-properties-common curl perl gnupg2 wget unzip && \
   # add repository keys
   mkdir -pm755 /etc/apt/keyrings && \
   wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
@@ -25,7 +25,7 @@ RUN \
 #  echo "deb http://ftp.us.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
-  apt-get install -y --no-install-recommends x11vnc openbox menu
+  apt-get install -y --no-install-recommends x11vnc openbox menu && \
 # libfaudio0 libfaudio0:i386
 #RUN \
 #  apt-get update -qq && \
@@ -34,7 +34,8 @@ RUN \
 #  apt-get install -qq -y \
 #  libfaudio0:i386 \
 #  libfaudio0 
-RUN \ 
+
+#RUN \ 
   apt-get install -qq -y --no-install-recommends \
   winehq-${WINEBRANCH}=${WINEVERSION} \
   wine-${WINEBRANCH}-i386=${WINEVERSION} \
@@ -45,21 +46,17 @@ RUN \
   xvfb \
   cabextract && \
   curl -L https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks > /usr/local/bin/winetricks && \
-  chmod +x /usr/local/bin/winetricks 
+  chmod +x /usr/local/bin/winetricks && \ 
+  mkdir /scripts /wineprefix /app
 
-# Winetricks (This block uses most of the build time)
-RUN \
-  mkdir /scripts
 COPY ./winetricks.sh /scripts
+
+
 RUN \
   chmod +x /scripts/winetricks.sh && \
-  mkdir /wineprefix /app
-
-WORKDIR /app
-RUN \
   bash -c 'WINEARCH=win64 WINEPREFIX=/wineprefix /scripts/winetricks.sh' && \
   rm -rf /scripts && \
-  rm /usr/local/bin/winetricks
+  rm /usr/local/bin/winetricks && \
 
 #RUN \
 #  apt-get autopurge -qq -y  \
@@ -79,13 +76,15 @@ RUN \
 #  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
 #  wine-${WINEBRANCH}=${WINEVERSION}
 
-RUN \
+#RUN \
   unset DISPLAY && \
-  winecfg
+  winecfg && \
+
 # Remove stuff we do not need anymore to reduce docker size
-RUN \
-  apt-get purge -qq -y software-properties-common curl gnupg2 wget && \
+#RUN \
+  apt-get purge -qq -y software-properties-common curl gnupg2 && \
   apt-get autopurge -qq -y perl && \
+  apt install -y psmisc unzip wget && \
   apt-get -qq clean autoclean && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
   
