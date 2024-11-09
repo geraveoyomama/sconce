@@ -49,7 +49,7 @@ RUN \
   chmod +x /usr/local/bin/winetricks && \ 
   mkdir /scripts /wineprefix /app
 
-COPY ./winetricks.sh /scripts
+COPY ./scripts/winetricks.sh /scripts
 
 
 RUN \
@@ -88,6 +88,6 @@ RUN \
   apt install -y psmisc unzip wget && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
   
-COPY entrypoint.sh /root/
+COPY ./scripts/entrypoint.sh /root/
 RUN chmod +x /root/entrypoint.sh
 ENTRYPOINT /root/entrypoint.sh
