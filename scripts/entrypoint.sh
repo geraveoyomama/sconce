@@ -53,8 +53,8 @@ bash -c 'DISPLAY=":99" wine $WINEPARAMS Z:/app/torch-server/Torch.Server.exe $TO
 echo "Reloading entrypoint."
 
 #killall "Z:/app/torch-server/Torch.Server.exe" &
-wineserver -k &
-killall openbox &
-killall x11vnc &
+#wineserver -k &
+#killall openbox &
+#killall x11vnc &
 killall Xvfb &
 sleep 5

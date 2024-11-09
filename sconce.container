@@ -16,14 +16,16 @@ PublishPort=27016:27016
 PublishPort=5009:5900
 #PublishPort=8080:8080 #API port
 
-Environment=VNCPASSWORD=Password
+Environment=VNCPASSWORD=
 #vnc password, empty disable authentication
 Environment=WINEDEBUG=-all
 #disable wine barfing logs to terminal
 #Environment=WINEDEBUG=+esync
-Environment=WINEESYNC=1 #comment to disable ESYNC
-Environment=DXVK_ASYNC=1 #should unhook the GUI from main game thread. No performance loss, only possible gains. Disable if GUI doesn't render.
-Environment=WINEPARAMS= 
+Environment=WINEESYNC=1
+#comment to disable ESYNC
+Environment=DXVK_ASYNC=1
+#should unhook the GUI from main game thread. No performance loss, only possible gains. Disable if GUI doesn't render.
+Environment=WINEPARAMS=
 #Environment=TORCHFLAGS=-autostart #torch flags. Uncomment to autostart torch
 
 LogDriver=journald
@@ -33,9 +35,9 @@ LogDriver=journald
 ExecStartPre=mkdir -p %h/%N/torch-server
 
 # Inform systemd of additional exit status
-SuccessExitStatus=0 143
-Restart=unless-stopped
-
+#SuccessExitStatus=0 143
+#Restart=on-abnormal
+Restart=always
 
 [Install]
 # Start by default on boot
