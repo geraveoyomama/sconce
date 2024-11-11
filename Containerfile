@@ -31,9 +31,6 @@ RUN \
 #  apt-get update -qq && \
 #  echo steam steam/question select "I AGREE" | debconf-set-selections && \
 #  echo steam steam/license note '' | debconf-set-selections && \
-#  apt-get install -qq -y \
-#  libfaudio0:i386 \
-#  libfaudio0 
 
 #RUN \ 
   apt-get install -qq -y --no-install-recommends \
