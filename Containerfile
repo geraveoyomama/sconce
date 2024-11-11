@@ -25,8 +25,8 @@ RUN \
 #  echo "deb http://ftp.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
-  apt-get install -y --no-install-recommends x11vnc openbox menu && \
-# libfaudio0 libfaudio0:i386
+  apt-get install -y --no-install-recommends xvfb x11vnc openbox menu && \
+# libfaudio0 libfaudio0:i386 cabextract
 #RUN \
 #  apt-get update -qq && \
 #  echo steam steam/question select "I AGREE" | debconf-set-selections && \
@@ -37,11 +37,9 @@ RUN \
   winehq-${WINEBRANCH}=${WINEVERSION} \
   wine-${WINEBRANCH}-i386=${WINEVERSION} \
   wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-  wine-${WINEBRANCH}=${WINEVERSION} \
+  wine-${WINEBRANCH}=${WINEVERSION} && \
 #  wine \
 #  steamcmd ]
-  xvfb \
-  cabextract && \
   curl -L https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks > /usr/local/bin/winetricks && \
   chmod +x /usr/local/bin/winetricks && \ 
   mkdir /scripts /wineprefix /app
