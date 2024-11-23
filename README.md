@@ -1,6 +1,6 @@
 Welcome to Sconce!
 
-This repo is built for older versions of podman. Specifically the version available in debian bookworm. This repo will be updated to match up to date versions of podman once trixie is hailed into stable.
+This repo is currently in transition from debian 12 to debian 13 as its running environment. In the container its still deb12
 
 Tested to work with SE 1.205.
 
@@ -15,9 +15,9 @@ This was created by combining previous work done by very smart people, credits d
 
 ### Features
 ---
- - Wine 9 (staging, esync compatible)
+ - Wine 9 (staging, esync enabled by default)
  - Configurable parameters for the container (torch autostart, password config).
- - Torch GUI over VNC (password configurable).
+ - Torch GUI over VNC (password configurable, empty for no password).
  - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Create specific user to isolate and rely on standard linux file permissions.
  - remote API working
 
@@ -25,8 +25,6 @@ This was created by combining previous work done by very smart people, credits d
 ---
 - podman
 - podman-compose
-- unzip
-- wget
 - Any VNC viewer
 
 ## Configuration
@@ -43,25 +41,19 @@ All configuration is done in the podman-compose.yml file.
 ---
 1. either have or add a non sudo user to run sconce
 2. su to the user
-3. Clone this repo (`git clone https://github.com/geraveoyomama/sconce`)
-4. change directory to sconce (`cd sconce`)
-5. Run `./start`
+3. Clone this repo (`wget https://raw.githubusercontent.com/geraveoyomama/sconce/refs/heads/main/podman-compose.yml`)
+4. Run `podman compose up -d`
 
-You can Ctrl-C break out of the start script after Torch is loaded, and it will
-continue running in the background. You can access the VNC server as
-well. It will place the server and instances into /torch-server/xxxxx.
-You can configure the server and instance after first run, but ideally ./stop
-it first.
+
+#### Alternatively clone the entire repo with `git clone https://github.com/geraveoyomama/sconce` and run `./start`
+
+ONLY CONFIGURE THE SERVER WHEN IT IS NOT RUNNING IF NOT DOING IT THROUGH THE GUI!
+
+You can access the VNC server as well. It will place the server and instances into /torch-server/xxxxx.
+You can configure the server and instance after first run.
 
 To connect through VNC, point your client at `$HOST:5900` and it
 should prompt you for your password.
-
-As well as the torch server, there is also a file manager instance
-that is launched alongside it, for your use to manage files.
-
-3. Run `./stop`
-
-This will kill and unload all docker processes.  You shouldn't configure the server files from outside the Docker unless you have made sure all processes are stopped and unloaded from memory.
 
 
 
