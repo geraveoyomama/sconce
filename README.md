@@ -1,5 +1,7 @@
 Welcome to Sconce!
 
+This repos contents are designed to work in an automated environment of updates, reboots and recovery. It is not designed for babysitting.
+
 This repo is currently in transition from debian 12 to debian 13 as its running environment. In the container its still deb12
 
 Tested to work with SE 1.205+.
