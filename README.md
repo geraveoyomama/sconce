@@ -41,8 +41,9 @@ All configuration is done in the podman-compose.yml file.
 ---
 1. either have or add a non sudo user to run sconce
 2. su to the user
-3. Clone this repo (`wget https://raw.githubusercontent.com/geraveoyomama/sconce/refs/heads/main/podman-compose.yml`)
-4. Run `podman compose up -d`
+3. Get the yaml (`wget https://raw.githubusercontent.com/geraveoyomama/sconce/refs/heads/main/podman-compose.yml`)
+4. Configure the yaml (`nano podman-compose.yml`)
+5. Run `podman compose up -d`
 
 
 #### Alternatively clone the entire repo with `git clone https://github.com/geraveoyomama/sconce` and run `./start`
