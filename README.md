@@ -1,3 +1,5 @@
+# On hold until debian 13 is released with up to date wine. Likely polished until SE2 gets multiplayer.
+
 Welcome to Sconce!
 
 This repos contents are designed to work in an automated environment of updates, reboots and recovery. It is not designed for babysitting.
