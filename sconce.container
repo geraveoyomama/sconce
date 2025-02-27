@@ -3,7 +3,6 @@ Description=Sconce, a Torch container.
 Wants=network-online.target
 After=network-online.target
 
-
 [Container]
 Image=ghcr.io/geraveoyomama/sconce:latest
 ContainerName=sconce
