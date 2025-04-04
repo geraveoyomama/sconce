@@ -9,6 +9,9 @@ jobs:
   build-and-run:
     runs-on: s8n-runner
     steps:
+     - name:
+       run: ls -la /tmp
+
 #    - name: get caps
 #      run: getcap /usr/bin/newuidmap /usr/bin/newgidmap
 
