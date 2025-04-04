@@ -17,4 +17,4 @@ jobs:
 
     - name: Build Docker image
       run: |
-        podman build -t git.s8n.nl/test/idiot ./Containerfile
+        podman build -t git.s8n.nl/test/idiot .
