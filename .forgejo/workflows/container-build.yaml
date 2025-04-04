@@ -15,7 +15,7 @@ jobs:
 #        curl -LJO https://raw.githubusercontent.com/external/repo/main/path/to/dockerfile
 #      working-directory: path/to/your/dockerfile/directory
     - name: Use Node.js
-      run: dnf install -y node
+      run: dnf install -y node git
     - name: Check out repository code
       uses: actions/checkout@v3
     - name: List files in the repository
