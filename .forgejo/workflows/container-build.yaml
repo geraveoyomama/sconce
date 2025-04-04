@@ -28,7 +28,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: login container registry
-      run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
+      run: podman --log-level debug login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
 
     - name: Build Docker image
       run: buildah build -t ghcr.io/geraveoyomama/sconce:test .
