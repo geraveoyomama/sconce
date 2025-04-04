@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-run:
-    runs-on: docker
+    runs-on: podman
 #    container
     steps:
 #    - name: Download Dockerfile from external repository
@@ -17,4 +17,4 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t git.s8n.nl/test/idiot Containerfile
+        podman build -t git.s8n.nl/test/idiot ./Containerfile
