@@ -9,11 +9,11 @@ jobs:
   build-and-run:
     runs-on: s8n-runner
     steps:
-    - name: get caps
-      run: getcap /usr/bin/newuidmap /usr/bin/newgidmap
+#    - name: get caps
+#      run: getcap /usr/bin/newuidmap /usr/bin/newgidmap
 
-    - name: delete ?id
-      run: truncate -s 0 /etc/subuid && truncate -s 0 /etc/subgid && podman system migrate
+#    - name: delete ?id
+#      run: truncate -s 0 /etc/subuid && truncate -s 0 /etc/subgid && podman system migrate
 
 #    - name: cleaning podman environment
 #      run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
