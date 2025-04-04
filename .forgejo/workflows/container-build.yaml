@@ -22,7 +22,7 @@ jobs:
       run: ls ${{ github.workspace }}
 
     - name: login container registry
-      run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} git.s8n.nl
+      run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
 
     - name: Build Docker image
       run: buildah build -t ghcr.io/geraveoyomama/sconce:test .
