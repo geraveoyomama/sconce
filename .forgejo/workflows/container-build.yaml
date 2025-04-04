@@ -18,8 +18,6 @@ jobs:
       run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
     - name: test ID
       run: id
-#    - name: list fuse dev
-#      run: ls -la /dev/fuse
     - name: Use Node.js
       run: dnf install -y node git
     - name: Check out repository code
