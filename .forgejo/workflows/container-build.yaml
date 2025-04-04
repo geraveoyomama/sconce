@@ -23,4 +23,4 @@ jobs:
         ls ${{ github.workspace }}
     - name: Build Docker image
       run: |
-        docker build -t git.s8n.nl/test/idiot .
+        podman build -t git.s8n.nl/test/idiot .
