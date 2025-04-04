@@ -8,25 +8,24 @@ on:
 jobs:
   build-and-run:
     runs-on: podman
-#    container
     steps:
-#    - name: Download Dockerfile from external repository
-#      run: |
-#        curl -LJO https://raw.githubusercontent.com/external/repo/main/path/to/dockerfile
-#      working-directory: path/to/your/dockerfile/directory
     - name: cleaning podman environment
       run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
-    - name: test ID
-      run: id
+
     - name: Use Node.js
       run: dnf install -y node git
+
     - name: Check out repository code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+
     - name: List files in the repository
       run: ls ${{ github.workspace }}
+
     - name: login container registry
-      run: podman login -u geraveoyomama -p ${{ secrets.REGISTRY_PASSWORD }} git.s8n.nl
+      run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} git.s8n.nl
+
     - name: Build Docker image
       run: buildah build -t ghcr.io/geraveoyomama/sconce:test .
+
     - name: Push container image
       run: podman push ghcr.io/geraveoyomama/sconce:test
