@@ -27,6 +27,6 @@ jobs:
     - name: login container registry
       run: podman login -u geraveoyomama -p ${{ secrets.REGISTRY_PASSWORD }} git.s8n.nl
     - name: Build Docker image
-      run: buildah build -t github.com/geraveoyomama/sconce:test .
+      run: buildah build -t ghcr.io/geraveoyomama/sconce:test .
     - name: Push container image
-      run: podman push github.com/geraveoyomama/sconce:test
+      run: podman push ghcr.io/geraveoyomama/sconce:test
