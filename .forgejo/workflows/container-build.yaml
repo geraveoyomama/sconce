@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-run:
-    runs-on: quay.io/containers/aio
+    runs-on: docker
 #    container
     steps:
 #    - name: Download Dockerfile from external repository
