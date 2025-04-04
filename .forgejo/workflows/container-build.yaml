@@ -11,6 +11,10 @@ jobs:
     steps:
     - name: get caps
       run: getcap /usr/bin/newuidmap /usr/bin/newgidmap
+
+    - name: delete ?id
+      run: > /etc/subuid; > /etc/subgid
+
 #    - name: cleaning podman environment
 #      run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
 
