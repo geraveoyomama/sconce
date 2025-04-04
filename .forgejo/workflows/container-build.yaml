@@ -10,8 +10,8 @@ jobs:
     runs-on: s8n-runner
     steps:
 
-    - name: cleaning podman environment
-      run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
+#    - name: cleaning podman environment
+#      run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
 
 #    - name: Use Node.js
 #      run: dnf install -y node git
@@ -19,8 +19,8 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    - name: List files in the repository
-      run: ls ${{ github.workspace }}
+#    - name: List files in the repository
+#      run: ls ${{ github.workspace }}
 
     - name: login container registry
       run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
