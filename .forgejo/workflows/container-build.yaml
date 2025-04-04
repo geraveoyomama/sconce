@@ -12,9 +12,6 @@ jobs:
 #    - name: ps -ef | grep podman
 #      run: ps -ef | grep podman
 
-#    - name: get caps
-#      run: getcap /usr/bin/newuidmap /usr/bin/newgidmap
-
 #    - name: delete ?id
 #      run: truncate -s 0 /etc/subuid && truncate -s 0 /etc/subgid && podman system migrate
 
