@@ -14,6 +14,8 @@ jobs:
 #      run: |
 #        curl -LJO https://raw.githubusercontent.com/external/repo/main/path/to/dockerfile
 #      working-directory: path/to/your/dockerfile/directory
+    - name: cleaning podman environment
+      run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
     - name: test ID
       run: id
     - name: load modprobe
@@ -29,4 +31,4 @@ jobs:
         ls ${{ github.workspace }}
     - name: Build Docker image
       run: |
-        buildah build -t git.s8n.nl/test/idiot .
+        buildah build -t simple .
