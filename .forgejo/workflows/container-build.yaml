@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-run:
-    runs-on: podman-toolkit
+    runs-on: docker
 #    container
     steps:
 #    - name: Download Dockerfile from external repository
@@ -21,4 +21,4 @@ jobs:
         ls ${{ github.workspace }}
     - name: Build Docker image
       run: |
-        podman build -t git.s8n.nl/test/idiot .
+        docker build -t git.s8n.nl/test/idiot .
