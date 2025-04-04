@@ -9,6 +9,7 @@ jobs:
   build-and-run:
     runs-on: podman
     steps:
+
     - name: cleaning podman environment
       run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
 
