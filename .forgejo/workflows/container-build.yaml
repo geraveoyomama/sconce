@@ -24,5 +24,7 @@ jobs:
       uses: actions/checkout@v3
     - name: List files in the repository
       run: ls ${{ github.workspace }}
+    - name: login container registry
+      run: podman login -u geraveoyomama -p ${{ secrets.REGISTRY_PASSWORD }} git.s8n.nl
     - name: Build Docker image
       run: buildah build -t simple .
