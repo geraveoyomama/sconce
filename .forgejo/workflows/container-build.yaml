@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-run:
-    runs-on: podman
+    runs-on: podman-toolkit
 #    container
     steps:
 #    - name: Download Dockerfile from external repository
