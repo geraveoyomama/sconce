@@ -7,13 +7,15 @@ on:
 
 jobs:
   build-and-run:
-    runs-on: docker
+    runs-on: podman
 #    container
     steps:
 #    - name: Download Dockerfile from external repository
 #      run: |
 #        curl -LJO https://raw.githubusercontent.com/external/repo/main/path/to/dockerfile
 #      working-directory: path/to/your/dockerfile/directory
+    - name: Use Node.js
+      uses: actions/setup-node@v1
     - name: Check out repository code
       uses: actions/checkout@v3
     - name: List files in the repository
