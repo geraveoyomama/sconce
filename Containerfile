@@ -21,17 +21,9 @@ RUN \
   # add repository keys
   mkdir -pm755 /etc/apt/keyrings && \
   wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
-  # add repositories
-#  echo "deb http://ftp.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
   apt-get install -y --no-install-recommends xvfb x11vnc openbox menu && \
-#RUN \
-#  apt-get update -qq && \
-#  echo steam steam/question select "I AGREE" | debconf-set-selections && \
-#  echo steam steam/license note '' | debconf-set-selections && \
-
-#RUN \ 
   apt-get install -qq -y --no-install-recommends \
   winehq-${WINEBRANCH} \
   wine-${WINEBRANCH}-i386 \

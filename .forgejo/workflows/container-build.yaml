@@ -9,19 +9,6 @@ jobs:
   build-and-run:
     runs-on: s8n-runner
     steps:
-
-#    - name: ps -ef | grep podman
-#      run: ps -ef | grep podman
-
-#    - name: delete ?id
-#      run: truncate -s 0 /etc/subuid && truncate -s 0 /etc/subgid && podman system migrate
-
-#    - name: cleaning podman environment
-#      run: podman system reset -f && rm /etc/containers/storage.conf && podman system reset -f
-
-#    - name: Use Node.js
-#      run: dnf install -y node git
-
     - name: Check out repository code
       uses: actions/checkout@v4
 
@@ -29,7 +16,7 @@ jobs:
       run: podman --log-level debug login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
 
     - name: Build Docker image
-      run: buildah build -t ghcr.io/geraveoyomama/sconce:test .
+      run: buildah build -t ghcr.io/geraveoyomama/sconce:latest .
 
     - name: Push container image
-      run: podman push ghcr.io/geraveoyomama/sconce:test
+      run: podman push ghcr.io/geraveoyomama/sconce:latest
