@@ -6,7 +6,8 @@ WORKDIR /root
 # never env DEBIAN_FRONTEND=noninteractive !!
 ARG DEBIAN_FRONTEND=noninteractive
 ARG WINEBRANCH=staging
-ARG WINEVERSION=10.2~bookworm-4
+ARG WINEVERSION=
+#"=10.2~bookworm-4"
 ENV WINEARCH=win64
 ENV WINEDEBUG=-all
 ENV WINEPREFIX=/wineprefix
@@ -25,7 +26,6 @@ RUN \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
   apt-get install -y --no-install-recommends xvfb x11vnc openbox menu && \
-# libfaudio0 libfaudio0:i386 cabextract
 #RUN \
 #  apt-get update -qq && \
 #  echo steam steam/question select "I AGREE" | debconf-set-selections && \
@@ -33,10 +33,10 @@ RUN \
 
 #RUN \ 
   apt-get install -qq -y --no-install-recommends \
-  winehq-${WINEBRANCH}=${WINEVERSION} \
-  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-  wine-${WINEBRANCH}=${WINEVERSION} && \
+  winehq-${WINEBRANCH} \
+  wine-${WINEBRANCH}-i386 \
+  wine-${WINEBRANCH}-amd64 \
+  wine-${WINEBRANCH} && \
 #  wine \
 #  steamcmd ]
   curl -L https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks > /usr/local/bin/winetricks && \
@@ -51,26 +51,6 @@ RUN \
   bash -c 'WINEARCH=win64 WINEPREFIX=/wineprefix /scripts/winetricks.sh' && \
   rm -rf /scripts && \
   rm /usr/local/bin/winetricks && \
-
-#RUN \
-#  apt-get autopurge -qq -y  \
-#  winehq-${WINEBRANCH}=${WINEVERSION} \
-#  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-#  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-#  wine-${WINEBRANCH}=${WINEVERSION} \
-#  wine
-
-#ARG WINEBRANCH=staging
-#ARG WINEVERSION=9.20~bookworm-1
-
-#RUN \
-#  apt-get install -qq -y --install-recommends \
-#  winehq-${WINEBRANCH}=${WINEVERSION} \
-#  wine-${WINEBRANCH}-i386=${WINEVERSION} \
-#  wine-${WINEBRANCH}-amd64=${WINEVERSION} \
-#  wine-${WINEBRANCH}=${WINEVERSION}
-
-#RUN \
   unset DISPLAY && \
   winecfg
 
