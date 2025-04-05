@@ -25,4 +25,4 @@ jobs:
       run: podman push ghcr.io/geraveoyomama/sconce:latest
 
     - name: Push container image to git.s8n.nl
-      run: git.s8n.nl/geraveoyomama/sconce:latest
+      run: podman push git.s8n.nl/geraveoyomama/sconce:latest
