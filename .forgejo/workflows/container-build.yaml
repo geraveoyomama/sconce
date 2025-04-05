@@ -12,8 +12,11 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    - name: login container registry
-      run: podman --log-level debug login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
+    - name: login to ghcr.io container registry
+      run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
+
+    - name: Login container registry
+      run: podman login -u geraveoyomama -p ${{ secrets.FORGEJO_LOGIN_PASSWORD }} git.s8n.nl
 
     - name: Build Docker image
       run: buildah build -t ghcr.io/geraveoyomama/sconce:latest -t git.s8n.nl/geraveoyomama/sconce:latest .
