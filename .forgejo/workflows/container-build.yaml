@@ -16,7 +16,7 @@ jobs:
       run: podman --log-level debug login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
 
     - name: Build Docker image
-      run: buildah build -t ghcr.io/geraveoyomama/sconce:latest .
+      run: buildah build -t ghcr.io/geraveoyomama/sconce:latest -t git.s8n.nl/geraveoyomama/sconce:latest .
 
     - name: Push container image
-      run: podman push ghcr.io/geraveoyomama/sconce:latest
+      run: podman push ghcr.io/geraveoyomama/sconce:latest git.s8n.nl/geraveoyomama/sconce:latest
