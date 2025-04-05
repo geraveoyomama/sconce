@@ -15,11 +15,14 @@ jobs:
     - name: login to ghcr.io container registry
       run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
 
-    - name: Login container registry
+    - name: Login s8n container registry
       run: podman login -u geraveoyomama -p ${{ secrets.FORGEJO_LOGIN_PASSWORD }} git.s8n.nl
 
     - name: Build Docker image
       run: buildah build -t ghcr.io/geraveoyomama/sconce:latest -t git.s8n.nl/geraveoyomama/sconce:latest .
 
-    - name: Push container image
-      run: podman push ghcr.io/geraveoyomama/sconce:latest git.s8n.nl/geraveoyomama/sconce:latest
+    - name: Push container image to ghcr.io
+      run: podman push ghcr.io/geraveoyomama/sconce:latest
+
+    - name: Push container image to git.s8n.nl
+      run: git.s8n.nl/geraveoyomama/sconce:latest
