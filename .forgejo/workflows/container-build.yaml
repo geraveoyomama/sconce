@@ -1,11 +1,9 @@
-name: Build and Run Docker Image
+name: Build and sconce image
 
 on:
-  schedule:
-    - cron: "0 0 1 * *"
   push:
     branches:
-      - main
+      - sid
 
 jobs:
   build-and-run:
@@ -14,17 +12,11 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v4
 
-    - name: login to ghcr.io container registry
-      run: podman login -u geraveoyomama -p ${{ secrets.PAT_GITHUB }} ghcr.io
-
     - name: Login s8n container registry
       run: podman login -u geraveoyomama -p ${{ secrets.FORGEJO_LOGIN_PASSWORD }} git.s8n.nl
 
     - name: Build Docker image
-      run: buildah build -t ghcr.io/geraveoyomama/sconce:latest -t git.s8n.nl/geraveoyomama/sconce:latest .
-
-    - name: Push container image to ghcr.io
-      run: podman push ghcr.io/geraveoyomama/sconce:latest
+      run: buildah build -t git.s8n.nl/geraveoyomama/sconce:sid .
 
     - name: Push container image to git.s8n.nl
-      run: podman push git.s8n.nl/geraveoyomama/sconce:latest
+      run: podman push git.s8n.nl/geraveoyomama/sconce:sid
