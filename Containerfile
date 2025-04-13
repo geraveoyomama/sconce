@@ -17,7 +17,7 @@ RUN dpkg --add-architecture i386 && \
   apt update && apt -y upgrade
 
 RUN \
-  apt install -y \
+  apt install -y --no-install-recommends \
   wget unzip wine xvfb x11vnc novnc openbox menu winetricks
 
 COPY ./scripts/winetricks.sh /root
