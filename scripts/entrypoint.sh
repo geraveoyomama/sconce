@@ -21,6 +21,8 @@ if [ ! -f /app/.Xauthority ]; then
   touch /app/x11vnc.log /app/.Xauthority
 fi
 
+env DISPLAY=:99.0 WINEDEBUG=-all winetricks vd=1024x786
+
 bash -c 'Xvfb :99 -screen 0 1024x768x24 -ac -br -nolisten unix &'
 
 
@@ -38,8 +40,8 @@ echo "Waiting 5 seconds for X server to initialize..."
 echo "Entrypoint injected."
 sleep 5
 
-bash -c 'DISPLAY=:99 openbox &'
-echo "Openbox started."
+#bash -c 'DISPLAY=:99 openbox &'
+#echo "Openbox started."
 
 # Open up file browser
 #bash -c 'DISPLAY=":99" winefile &'
@@ -48,7 +50,7 @@ echo "Openbox started."
 # Run Torch Server
 echo "Starting Torch Server ..."
 bash -c 'DISPLAY=":99" wine $WINEPARAMS Z:/app/torch-server/Torch.Server.exe $TORCHFLAGS '
-#xvfb-run -n 99 -l -f /app/.Xauthority -- wine torch-server/Torch.Server.exe $@ &
+#xvfb-run -- wine Z:/app/torch-server/Torch.Server.exe $@ &
 
 #echo "Something didn't work.  Break this."
 echo "Reloading entrypoint."

@@ -13,7 +13,7 @@ services:
     #userns_mode: keep-id
     volumes:
       - ./torch-server:/app/torch-server
-      #- ./entrypoint.sh:/root/entrypoint.sh #uncomment to inject custom entrypoint without rebuilding. ONLY IF YOU KNOW WHAT YOU ARE DOING!
+#      - ./scripts/entrypoint.sh:/root/entrypoint.sh #uncomment to inject custom entrypoint without rebuilding. ONLY IF YOU KNOW WHAT YOU ARE DOING!
     ports:
      - "27016:27016/udp" #Main game port.
      - "5900:5900" #change port if already in use.
@@ -25,4 +25,4 @@ services:
       - WINEESYNC=1 #comment to disable ESYNC
       - DXVK_ASYNC=1 #should unhook the GUI from main game thread. No performance loss, only possible gains. Disable if GUI doesn't render or misbehaves.
       - WINEPARAMS= #additional parameters passed AFTER wine command (wine $WINEPARAMS %command%)
-#      - TORCHFLAGS=-autostart #torch flags. Uncomment to autostart torch
+      #- TORCHFLAGS=-autostart #torch flags. Uncomment to autostart torch
