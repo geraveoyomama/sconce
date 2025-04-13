@@ -7,7 +7,7 @@ x-podman:
 services:
   sconce:
     #build: .
-    image: ghcr.io/geraveoyomama/sconce:latest
+    image: ghcr.io/geraveoyomama/sconce:sid
     container_name: sconce
     restart: unless-stopped
     #userns_mode: keep-id
@@ -16,8 +16,8 @@ services:
       #- ./entrypoint.sh:/root/entrypoint.sh #uncomment to inject custom entrypoint without rebuilding. ONLY IF YOU KNOW WHAT YOU ARE DOING!
     ports:
      - "27016:27016/udp" #Main game port.
-     - "5009:5900" #change port if already in use.
-     - "8080:8080"
+     - "5900:5900" #change port if already in use.
+     - "6080:6080"
     environment:
       - VNCPASSWORD=
       - WINEDEBUG=-all #disable wine barfing logs to terminal

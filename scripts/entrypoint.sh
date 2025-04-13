@@ -32,6 +32,7 @@ else
   echo "No VNC password set."
 fi
 
+bash -c '/usr/share/novnc/utils/novnc_proxy &'
 
 echo "Waiting 5 seconds for X server to initialize..."
 echo "Entrypoint injected."

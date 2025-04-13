@@ -11,8 +11,12 @@ AutoUpdate=registry
 #UserNS=keep-id
 Volume=%h/%N/torch-server:/app/torch-server
 
+#Game port
 PublishPort=27016:27016/udp
-PublishPort=5009:5900
+#noVNC port
+PublishPort=6080:6080
+#Direct VNC Port
+#PublishPort=5900:5900
 #PublishPort=8080:8080 #API port
 
 Environment=VNCPASSWORD=
