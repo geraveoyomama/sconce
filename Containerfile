@@ -11,14 +11,14 @@ ENV WINEDEBUG=-all
 ENV WINEPREFIX=/wineprefix
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
-RUN \
+
+RUN dpkg --add-architecture i386 && \
   sed -i -e 's/main/main contrib/g'  /etc/apt/sources.list.d/debian.sources && \
-  dpkg --add-architecture i386 && \
   apt update && apt -y upgrade
 
 RUN \
   apt install -y \
-  wget unzip winetricks wine xvfb x11vnc novnc openbox menu
+  wget unzip wine xvfb x11vnc novnc openbox menu winetricks
 
 COPY ./scripts/winetricks.sh /root
 

@@ -4,13 +4,15 @@ Welcome to Sconce!
 
 This repos contents are designed to work in an automated environment of updates, reboots and recovery. It is not designed for babysitting.
 
-This repo is currently in transition from debian 12 to debian 13 as its running environment. In the container its still deb12
+~This repo is currently in transition from debian 12 to debian 13 as its running environment. In the container its still deb12~
+
+This container is switching to debian sid for the build process. This means that all packages are sourced from debian. This should allow for less drift and less maintenance overhead. (until debian packages are conflicting)
 
 Tested to work with SE 1.205+.
 
 ***IF YOU RUN INTO ERRORS, SUBMIT AN ISSUE HERE FIRST AND THEN IF IT'S UNRESOLVED GO TO TORCH FOR HELP THEN KEEN FOR HELP***
 
-## podman TorchAPI Server in Debian-slim with Wine 9
+## podman TorchAPI Server in Debian Sid-slim with Wine 10
 ---
 
 This is a container image to run Torch for space engineers. You can interact with it through a password protected VNC server or by editing the configs manually.
@@ -28,6 +30,9 @@ This was created by combining previous work done by very smart people, credits d
 ## Requirements
 ---
 - podman
+
+## Soft requirements
+---
 - podman-compose
 - Any VNC viewer
 
