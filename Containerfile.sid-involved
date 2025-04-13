@@ -11,18 +11,22 @@ ENV WINEDEBUG=-all
 ENV WINEPREFIX=/wineprefix
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
+RUN   dpkg --add-architecture i386
 
-RUN dpkg --add-architecture i386 && \
+RUN \
   sed -i -e 's/main/main contrib/g'  /etc/apt/sources.list.d/debian.sources && \
   apt update && apt -y upgrade
 
-RUN \
-  apt install -y --no-install-recommends \
-  wget unzip xvfb x11vnc novnc openbox menu
+RUN apt install -y wget && \
+  mkdir -pm755 /etc/apt/keyrings && \
+  wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
+  wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources && \
+  wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && chmod  +x /usr/local/bin/winetricks && \
+  apt update && apt -y upgrade
 
 RUN \
   apt install -y \
-  winetricks wine
+  wget unzip winehq-staging wine-staging xvfb x11vnc novnc openbox menu
 
 COPY ./scripts/winetricks.sh /root
 
@@ -36,7 +40,7 @@ RUN \
 
 # Set final packages and package manager state.
 RUN \
-  apt install -y procps unzip wget && \
+  apt install -y psmisc unzip wget sudo && \
   apt autopurge -y && \
   apt -qq clean autoclean && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
