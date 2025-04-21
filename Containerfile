@@ -23,7 +23,7 @@ RUN \
   wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
   wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
   apt-get update && \
-  apt-get install -y --no-install-recommends xvfb x11vnc openbox menu && \
+  apt-get install -y --no-install-recommends xvfb x11vnc novnc openbox menu && \
   apt-get install -qq -y --no-install-recommends \
   winehq-${WINEBRANCH} \
   wine-${WINEBRANCH}-i386 \
