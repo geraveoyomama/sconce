@@ -1,4 +1,4 @@
-# On hold until debian 13 is released with up to date wine. Likely polished until SE2 gets multiplayer.
+# On hold until debian 13 is released with up to date wine. Polished until SE2 gets multiplayer then retired to automated building.
 
 Welcome to Sconce!
 
