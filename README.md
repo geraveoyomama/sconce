@@ -10,7 +10,7 @@ Tested to work with SE 1.205+.
 
 ***IF YOU RUN INTO ERRORS, SUBMIT AN ISSUE HERE FIRST AND THEN IF IT'S UNRESOLVED GO TO TORCH FOR HELP THEN KEEN FOR HELP***
 
-## podman TorchAPI Server in Debian-slim with Wine 9
+## podman TorchAPI Server in Debian-slim with Wine 10
 ---
 
 This is a container image to run Torch for space engineers. You can interact with it through a password protected VNC server or by editing the configs manually.
