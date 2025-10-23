@@ -18,6 +18,7 @@ This was created by combining previous work done by very smart people, credits d
 ### Features
 ---
  - Wine 10 (staging, esync enabled by default)
+ - noVNC, only a browser needed for VNC viewing
  - Configurable parameters for the container (torch autostart, password config).
  - Torch GUI over VNC (password configurable, empty for no password).
  - No permission issues. The container has the same access as the running user. DO NOT RUN AS ROOT. Create specific user to isolate and rely on standard linux file permissions.
