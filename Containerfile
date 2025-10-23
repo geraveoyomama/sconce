@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 WORKDIR /root
 
@@ -17,11 +17,12 @@ RUN \
   dpkg --add-architecture i386 && \
   apt-get -qq -y update && \
   apt-get upgrade -y -qq && \
-  apt-get install -y -qq software-properties-common curl perl gnupg2 wget unzip && \
+  apt-get install -y -qq curl perl gpg wget unzip cabextract
+ #&& \
   # add repository keys
-  mkdir -pm755 /etc/apt/keyrings && \
+RUN  mkdir -pm755 /etc/apt/keyrings && \
   wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key && \
-  wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources && \
+  wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/trixie/winehq-trixie.sources && \
   apt-get update && \
   apt-get install -y --no-install-recommends xvfb x11vnc novnc openbox menu && \
   apt-get install -qq -y --no-install-recommends \
@@ -32,10 +33,10 @@ RUN \
 #  wine \
 #  steamcmd ]
   curl -L https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks > /usr/local/bin/winetricks && \
-  chmod +x /usr/local/bin/winetricks && \ 
+  chmod +x /usr/local/bin/winetricks && \
   mkdir /scripts /wineprefix /app
 
-COPY ./scripts/winetricks.sh /scripts
+COPY ./scripts/winetricks.sh /scripts/winetricks.sh
 
 
 RUN \
@@ -43,15 +44,16 @@ RUN \
   bash -c 'WINEARCH=win64 WINEPREFIX=/wineprefix /scripts/winetricks.sh' && \
   rm -rf /scripts && \
   rm /usr/local/bin/winetricks && \
-  unset DISPLAY && \
-  winecfg
+  unset DISPLAY
+# && \
+#  winecfg
 
-# Remove stuff we do not need anymore to reduce docker size
+# Remove stuff we do not need anymore to reduce container size
 RUN \
-  apt-get purge -qq -y software-properties-common curl gnupg2 && \
+  apt-get purge -qq -y curl && \
   apt-get autopurge -qq -y perl && \
   apt-get -qq clean autoclean && \
-  apt install -y psmisc unzip wget && \
+  apt install -y procps psmisc unzip wget && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
   
 COPY ./scripts/entrypoint.sh /root/
