@@ -12,7 +12,8 @@ AutoUpdate=registry
 Volume=%h/%N/torch-server:/app/torch-server
 
 PublishPort=27016:27016/udp
-PublishPort=5009:5900
+#PublishPort=5009:5900
+PublishPort=6080:6080
 #PublishPort=8080:8080 #API port
 
 Environment=VNCPASSWORD=

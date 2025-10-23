@@ -18,6 +18,7 @@ services:
      - "27016:27016/udp" #Main game port.
      - "5009:5900" #change port if already in use.
      - "8080:8080"
+     - "6080:6080" #noVNC port for clientless interaction.
     environment:
       - VNCPASSWORD=
       - WINEDEBUG=-all #disable wine barfing logs to terminal
