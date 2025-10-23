@@ -1,17 +1,14 @@
 # THIS PACKAGE IS PROVIDED AS IS!
-# On hold until debian 13 is released with up to date wine. Polished until SE2 gets multiplayer then retired to automated building.
 
 Welcome to Sconce!
 
-This repos contents are designed to work in an automated environment of updates, reboots and recovery. It is not designed for babysitting.
-
-This repo is currently in transition from debian 12 to debian 13 as its running environment. In the container its still deb12
+This repository's contents are designed to work in an automated environment of updates, reboots and recovery. It is not designed for babysitting.
 
 Tested to work with SE 1.205+.
 
 ***IF YOU RUN INTO ERRORS, SUBMIT AN ISSUE HERE FIRST AND THEN IF IT'S UNRESOLVED GO TO TORCH FOR HELP THEN KEEN FOR HELP***
 
-## podman TorchAPI Server in Debian-slim with Wine 10
+## TorchAPI Server in Debian-slim with Wine 10
 ---
 
 This is a container image to run Torch for space engineers. You can interact with it through a password protected VNC server or by editing the configs manually.
@@ -29,6 +26,9 @@ This was created by combining previous work done by very smart people, credits d
 ## Requirements
 ---
 - podman
+
+### optional
+---
 - podman-compose
 - Any VNC viewer
 
@@ -65,7 +65,7 @@ should prompt you for your password.
 
 ## Notes
 ---
-- This is designed for headless servers, nonetheless it will work on headed servers.
+- This is designed for headless servers, nonetheless it will work on headfull servers.
 - Closing the Torch window restarts all processes in the container. The container does not need to reboot to apply changes to torch.
 - Enter the container by running: `podman exec -it sconce /bin/bash`
 - If you want to change the entrypoint script, you need to rebuild the image. Once this has been done I request you make a merge request to add the functionality to the master sconce repo.

@@ -21,7 +21,7 @@ if [ ! -f /app/.Xauthority ]; then
   touch /app/x11vnc.log /app/.Xauthority
 fi
 
-bash -c 'Xvfb :99 -screen 0 1024x768x24 -ac -br -nolisten unix &'
+bash -c 'Xvfb :99 -screen 0 1024x1024x24 -ac -br -nolisten unix &'
 
 
 if [ "$VNCPASSWORD" ]; then
@@ -48,6 +48,7 @@ echo "Openbox started."
 # Run Torch Server
 echo "Starting Torch Server ..."
 bash -c 'DISPLAY=":99" wine $WINEPARAMS Z:/app/torch-server/Torch.Server.exe $TORCHFLAGS '
+#DISPLAY=":99" wine $WINEPARAMS Z:/app/torch-server/Torch.Server.exe $TORCHFLAGS
 #xvfb-run -n 99 -l -f /app/.Xauthority -- wine torch-server/Torch.Server.exe $@ &
 
 #echo "Something didn't work.  Break this."
