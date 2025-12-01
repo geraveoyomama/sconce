@@ -5,19 +5,22 @@ After=network-online.target
 
 [Container]
 Image=ghcr.io/geraveoyomama/sconce:latest
-ContainerName=sconce
+ContainerName=%N
 AutoUpdate=registry
 
 #UserNS=keep-id
 Volume=%h/%N/torch-server:/app/torch-server
 
+#game port
 PublishPort=27016:27016/udp
+#VNC port
 #PublishPort=5009:5900
+#noVNC port
 PublishPort=6080:6080
-#PublishPort=8080:8080 #API port
+#PublishPort=8080:8080 #API port, uncomment if needed
 
 Environment=VNCPASSWORD=
-#vnc password, empty disable authentication
+#vnc password, empty disables authentication
 Environment=WINEDEBUG=-all
 #disable wine barfing logs to terminal
 #Environment=WINEDEBUG=+esync
@@ -33,10 +36,6 @@ LogDriver=journald
 
 [Service]
 ExecStartPre=mkdir -p %h/%N/torch-server
-
-# Inform systemd of additional exit status
-#SuccessExitStatus=0 143
-#Restart=on-abnormal
 Restart=always
 
 [Install]

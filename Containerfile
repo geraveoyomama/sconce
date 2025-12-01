@@ -17,7 +17,7 @@ RUN \
   dpkg --add-architecture i386 && \
   apt-get -qq -y update && \
   apt-get upgrade -y -qq && \
-  apt-get install -y -qq curl perl gpg wget unzip cabextract
+  apt-get install -y -qq curl perl gpg wget cabextract
  #&& \
   # add repository keys
 RUN  mkdir -pm755 /etc/apt/keyrings && \
@@ -50,8 +50,7 @@ RUN \
 
 # Remove stuff we do not need anymore to reduce container size
 RUN \
-  apt-get purge -qq -y curl && \
-  apt-get autopurge -qq -y perl && \
+  apt-get autopurge -qq -y curl perl && \
   apt-get -qq clean autoclean && \
   apt install -y procps psmisc unzip wget && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/

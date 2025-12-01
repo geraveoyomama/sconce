@@ -4,7 +4,7 @@ Welcome to Sconce!
 
 This repository's contents are designed to work in an automated environment of updates, reboots and recovery. It is not designed for babysitting.
 
-Tested to work with SE 1.205+.
+Tested to work with SE 1.206+ and should work with the latest version of Torch.
 
 ***IF YOU RUN INTO ERRORS, SUBMIT AN ISSUE HERE FIRST AND THEN IF IT'S UNRESOLVED GO TO TORCH FOR HELP THEN KEEN FOR HELP***
 
