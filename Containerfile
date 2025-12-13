@@ -34,7 +34,7 @@ RUN  mkdir -pm755 /etc/apt/keyrings && \
 #  steamcmd ]
   curl -L https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks > /usr/local/bin/winetricks && \
   chmod +x /usr/local/bin/winetricks && \
-  mkdir /scripts /wineprefix /app
+  mkdir -p /scripts /wineprefix /app/torch-server
 
 COPY ./scripts/winetricks.sh /scripts/winetricks.sh
 
